@@ -1,5 +1,7 @@
 <Solution>
-  <Folder Name="/Playground GQI/" />
+  <Folder Name="/Playground GQI/">
+    <Project Path="NodeRecovery Playground GQI/NodeRecovery Playground GQI.csproj" Id="bb1bfe5e-c3d4-4f21-b43e-68f626722870" />
+  </Folder>
   <Folder Name="/Playground Scripts/">
     <Project Path="NodeRecovery Playground SetMaintenance/NodeRecovery Playground SetMaintenance.csproj" Id="30168fc8-5b8d-4861-ade5-0d5418350f3d" />
   </Folder>
