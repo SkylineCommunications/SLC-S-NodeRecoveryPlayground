@@ -154,7 +154,8 @@ namespace NodeRecoveryGlobalClusterState
 					var isLocalConnectedNode = _localDmaId == nodeId;
 					var (x, y) = GetPositionCircle(idx, _dmaNames.Count);
 
-					return new GQIRow(new GQICell[]
+					var rowKey = nodeId.ToString();
+					var cells = new GQICell[]
 					{
 						new GQICell() { Value = nodeId, DisplayValue = nodeId.ToString() },
 						new GQICell() { Value = name, DisplayValue = name },
@@ -164,7 +165,9 @@ namespace NodeRecoveryGlobalClusterState
 						new GQICell() { Value = false, DisplayValue = "false" },
 						new GQICell() { Value = false, DisplayValue = "false" },
 						new GQICell() { Value = isLocalConnectedNode, DisplayValue = isLocalConnectedNode.ToString() },
-					});
+					};
+
+                    return new GQIRow(rowKey, cells);
 				}).ToArray();
 
 				return rows;
