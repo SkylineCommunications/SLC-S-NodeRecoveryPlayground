@@ -147,7 +147,7 @@ namespace NodeRecoveryGlobalClusterState
 			{
 				// failed, most likely there is no leader currently, just return all nodes without state.
 				// So local states (edges) can still be shown
-				var rows = _dmaNames.Select((kvp, idx) =>
+				var rows = _dmaNames.OrderBy(kvp => kvp.Key).Select((kvp, idx) =>
 				{
 					var nodeId = kvp.Key;
 					var name = kvp.Value;
