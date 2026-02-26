@@ -1,3 +1,5 @@
 <Solution>
+  <Folder Name="/Playground GQI/" />
+  <Folder Name="/Playground Scripts/" />
   <Project Path="NodeRecovery Playground/NodeRecovery Playground.csproj" />
 </Solution>
