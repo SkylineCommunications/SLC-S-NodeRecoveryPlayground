@@ -18,9 +18,9 @@ namespace NodeRecoveryLocalClusterState
 	{
 		private static readonly GQIColumn[] _columns = new GQIColumn[]
 		{
-			new GQIIntColumn("SrcNodeId"),
-			new GQIIntColumn("DstNodeId"),
-			new GQIStringColumn("NodeState"),
+			new GQIIntColumn("Source Node Id"),
+			new GQIIntColumn("Destination Node Id"),
+			new GQIStringColumn("Node State"),
 		};
 
 		private readonly TimeSpan _updateInterval = TimeSpan.FromSeconds(5);
