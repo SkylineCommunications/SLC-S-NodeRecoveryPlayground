@@ -15,6 +15,12 @@
 	</Memory>
 
 	<Parameters>
+		<ScriptParameter id="2" type="string" values="">
+			<Description>DMAIDs</Description>
+		</ScriptParameter>
+		<ScriptParameter id="3" type="string" values="">
+			<Description>In Maintenance</Description>
+		</ScriptParameter>
 	</Parameters>
 
 	<Script>
