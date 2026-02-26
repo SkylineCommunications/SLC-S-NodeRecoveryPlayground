@@ -21,7 +21,6 @@ namespace NodeRecoveryGlobalClusterState
 		{
 			new GQIIntColumn("Node Id"),
 			new GQIStringColumn("Node Name"),
-			new GQIStringColumn("Node Label"),
 			new GQIStringColumn("Node State"),
 			new GQIDoubleColumn("Position X"),
 			new GQIDoubleColumn("Position Y"),
@@ -125,19 +124,13 @@ namespace NodeRecoveryGlobalClusterState
 					var isLocalConnectedNode = _localDmaId == nodeId;
 					var name = string.Empty;
 					_dmaNames.TryGetValue(nodeId, out name);
-					var label = CreateLabel(nodeId, name, nodeStateInfo.InMaintenance, isLocalConnectedNode);
 					var (x, y) = GetPositionCircle(idx, clusterSize);
-
-					var labelBuilder = new StringBuilder();
-					labelBuilder.AppendLine(name);
-					labelBuilder.AppendLine(nodeId.ToString());
 
 					var rowKey = nodeId.ToString();
 					var cells = new GQICell[]
 					{
 						new GQICell() { Value = nodeId, DisplayValue = nodeId.ToString() },
 						new GQICell() { Value = name, DisplayValue = name },
-						new GQICell() { Value = label, DisplayValue = label },
 						new GQICell() { Value = nodeStateInfo.State.ToString(), DisplayValue = nodeStateInfo.State.ToString() },
 						new GQICell() { Value = x, DisplayValue = x.ToString() },
 						new GQICell() { Value = y, DisplayValue = y.ToString() },
@@ -161,14 +154,12 @@ namespace NodeRecoveryGlobalClusterState
 					var nodeId = kvp.Key;
 					var name = kvp.Value;
 					var isLocalConnectedNode = _localDmaId == nodeId;
-					var label = CreateLabel(nodeId, name, false, isLocalConnectedNode);
 					var (x, y) = GetPositionCircle(idx, _dmaNames.Count);
 
 					return new GQIRow(new GQICell[]
 					{
 						new GQICell() { Value = nodeId, DisplayValue = nodeId.ToString() },
 						new GQICell() { Value = name, DisplayValue = name },
-						new GQICell() { Value = label, DisplayValue = label },
 						new GQICell() { Value = "None", DisplayValue = "None" },
 						new GQICell() { Value = x, DisplayValue = x.ToString() },
 						new GQICell() { Value = y, DisplayValue = y.ToString() },
@@ -181,19 +172,6 @@ namespace NodeRecoveryGlobalClusterState
 
 				return rows;
 			}
-		}
-
-		private string CreateLabel(int nodeId, string name, bool inMaintenance, bool isLocalConnectedNode)
-		{
-			var labelBuilder = new StringBuilder();
-			if (!string.IsNullOrEmpty(name))
-				labelBuilder.AppendLine(name);
-			labelBuilder.AppendLine($"({nodeId})");
-			if (isLocalConnectedNode)
-				labelBuilder.AppendLine("(Connected)");
-			if (inMaintenance)
-				labelBuilder.AppendLine("(Maintenance)");
-			return labelBuilder.ToString();
 		}
 
 		private (double X, double Y) GetPositionCircle(double idx, double count)
