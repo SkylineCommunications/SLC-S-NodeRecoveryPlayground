@@ -5,7 +5,7 @@
 	<Type>Automation</Type>
 	<Author>RobbeDG</Author>
 	<CheckSets>FALSE</CheckSets>
-	<Folder></Folder>
+	<Folder>NodeRecovery Playground</Folder>
 	<Interactivity>Auto</Interactivity>
 
 	<Protocols>
