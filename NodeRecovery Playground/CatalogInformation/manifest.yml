@@ -45,7 +45,7 @@ short_description: Demo app for Node Recovery on DataMiner
 # A valid URL that points to the source code.
 #   A valid URL
 #   Max length: 2048 characters
-source_code_url: 
+source_code_url: https://github.com/SkylineCommunications/SLC-S-NodeRecoveryPlayground
 
 # [Optional]
 # A valid URL that points to documentation.
