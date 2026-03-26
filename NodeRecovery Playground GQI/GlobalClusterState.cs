@@ -179,19 +179,28 @@ namespace NodeRecoveryGlobalClusterState
 
 		private (double X, double Y) GetPositionCircle(double idx, double count)
 		{
-			// To get the coordinates of n nodes evenly spaced on a circle, you can use the following formulas, where r is the radius of the circle and (x0, y0) is the center of the circle:
-			// x = x0 + r * cos(2PI k/n)
-			// y = y0 + r * sin(2PI k/n)
-			// where k ranges from 0 to n-1 (or 1 to n)
+            // default viewport in node edge is 100x100, this makes the scaling of the node template play nice
+            double viewport = 100d;
 
-			// also offset the cos so the first node starts at the top (offset with PI / 2)
-			// also do minus instead of plus so the nodes go clockwise
-			double viewport = 10d;
-			double radius = viewport * 0.8d;
+            double viewportHalf = viewport * 0.5d;
+
+            if (count == 1)
+				return (viewportHalf, viewportHalf); // if there is only one node, just put it in the middle
+
+            // To get the coordinates of n nodes evenly spaced on a circle, you can use the following formulas, where r is the radius of the circle and (x0, y0) is the center of the circle:
+            // x = x0 + r * cos(2PI k/n)
+            // y = y0 + r * sin(2PI k/n)
+            // where k ranges from 0 to n-1 (or 1 to n)
+
+            // also offset the cos so the first node starts at the top (offset with PI / 2)
+            // also do minus instead of plus so the nodes go clockwise
+
+            // radius is half of viewport size, then take 80% to have some buffer space rest of node template + padding
+            double radius = viewportHalf * 0.8d; 
+
 			double radians = (Math.PI / 2) - (2 * Math.PI * idx / count);
-
-			double x = (viewport / 2) + (radius * Math.Cos(radians));
-			double y = (viewport / 2) + (radius * Math.Sin(radians));
+			double x = viewportHalf + (radius * Math.Cos(radians));
+			double y = viewportHalf + (radius * Math.Sin(radians));
 
 			return (x, y);
 		}
