@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Skyline.DataMiner.Dev.Common" Version="10.6.3" />
     <PackageReference Include="Skyline.DataMiner.Files.SLAnalyticsTypes" Version="10.6.3" />
-    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.1">
+    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="2.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
