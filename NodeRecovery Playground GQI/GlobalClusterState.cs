@@ -68,11 +68,13 @@ namespace NodeRecoveryGlobalClusterState
 		/// <inheritdoc />
 		public GQIColumn[] GetColumns() => _columns;
 
+		/// <inheritdoc />
 		public GQIPage GetNextPage(GetNextPageInputArgs args)
 		{
 			return new GQIPage(GetRows());
 		}
 
+		/// <inheritdoc />
 		public void OnStartUpdates(IGQIUpdater updater)
 		{
 			Task.Run(() =>
@@ -96,6 +98,7 @@ namespace NodeRecoveryGlobalClusterState
 			});
 		}
 
+		/// <inheritdoc />
 		public void OnStopUpdates()
 		{
 			_isUpdating = false;

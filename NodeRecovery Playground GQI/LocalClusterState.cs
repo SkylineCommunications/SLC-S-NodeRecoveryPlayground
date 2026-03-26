@@ -47,6 +47,7 @@ namespace NodeRecoveryLocalClusterState
 			return new GQIPage(GetRows());
 		}
 
+		/// <inheritdoc />
 		public void OnStartUpdates(IGQIUpdater updater)
 		{
 			Task.Run(() =>
@@ -82,6 +83,7 @@ namespace NodeRecoveryLocalClusterState
 			});
 		}
 
+		/// <inheritdoc />
 		public void OnStopUpdates()
 		{
 			_isUpdating = false;
